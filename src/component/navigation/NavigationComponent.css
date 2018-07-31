@@ -1,0 +1,11 @@
+.navigationStyle {
+    height: 35px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #ffffff;
+    border-style:solid;
+    border-bottom:0.5px solid rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
