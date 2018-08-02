@@ -64,7 +64,6 @@ class NavigationWeatherComponent extends Component {
             })
             .then(weatherJson => {
                 let weatherObject = weatherJson.HeWeather6[0]
-                alert(weatherObject);
                 if (weatherObject.status === "ok") {
                     return weatherObject.now;
                 } else {
