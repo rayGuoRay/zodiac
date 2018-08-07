@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './NavigationWeatherComponent.css'
+import suitWashCarImg from '../../img/suit_wash_car.png';
+import unSuitWashCarImg from '../../img/unsuit_wash_car.png';
 
 class NavigationWeatherComponent extends Component {
 
@@ -8,6 +10,12 @@ class NavigationWeatherComponent extends Component {
         this.state = {
             weatherInfo : {},
             comfInfo : {},
+            drsgInfo : {},
+            fluInfo : {},
+            sportInfo: {},
+            travInfo: {},
+            uvInfo: {},
+            cwInfo: {},
         }
     } 
 
@@ -15,13 +23,28 @@ class NavigationWeatherComponent extends Component {
         const cond_image = "https://cdn.heweather.com/cond_icon/" + this.state.weatherInfo.cond_code + ".png";
         const tmp_value = this.state.weatherInfo.tmp;
         const wind_sc = this.state.weatherInfo.wind_sc;
+        const comf = this.state.comfInfo.brf;
+        const drsg = this.state.drsgInfo.brf;
+        const flu = this.state.fluInfo.brf;
+        const sport = this.state.sportInfo.brf;
+        const trav = this.state.travInfo.brf;
+        const uv = this.state.uvInfo.brf;
+        const cwIcon = (this.state.cwInfo.brf.toString()).indexof("不宜") === -1 ? unSuitWashCarImg : suitWashCarImg;
+
 
         return (
             <div className='navigationWeatherStyle'>
                 <div className="navigationWeatherLocationStyle">成都:</div>
                 <img className="navigationWeatherIconStyle" src={cond_image}/>
                 <div className="navigationWeatherTemperatureStyle"> {tmp_value}℃ </div>
-                <div className="navigationWeatherAirQualityStyle"> {wind_sc} </div>        
+                <div className="navigationWeatherAirQualityStyle"> {wind_sc} </div>
+                <div className="navigationWeatherAirQualityStyle"> {comf} </div>
+                <div className="navigationWeatherAirQualityStyle"> {drsg} </div>
+                <div className="navigationWeatherAirQualityStyle"> {flu} </div>
+                <div className="navigationWeatherAirQualityStyle"> {sport} </div>
+                <div className="navigationWeatherAirQualityStyle"> {trav} </div>
+                <div className="navigationWeatherAirQualityStyle"> {uv} </div>        
+                <img className="navigationWeatherIconStyle" src={cwIcon}/>
             </div>    
         );
     }
@@ -94,12 +117,14 @@ class NavigationWeatherComponent extends Component {
                     console.log(lifeStyleObject);
                 }
             })
-            .map((index, object) => {
-                if (index === 0) {
-                    alert(object);
-                } else if (index === 1) {
-                    alert(object);
-                }
+            .then(lifeStyleArray => {
+                this.setState({comfInfo : lifeStyleArray[0]});
+                this.setState({drsgInfo : lifeStyleArray[1]});
+                this.setState({fluInfo : lifeStyleArray[2]});
+                this.setState({sportInfo : lifeStyleArray[3]});
+                this.setState({travInfo : lifeStyleArray[4]});
+                this.setState({uvInfo : lifeStyleArray[5]});
+                this.setState({cwInfo : lifeStyleArray[6]});
             })
             .catch(function(error) {
                 console.log(error);    
