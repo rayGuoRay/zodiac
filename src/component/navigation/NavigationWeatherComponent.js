@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import './NavigationWeatherComponent.css'
-import suitWashCarImg from '../../img/suit_wash_car.png';
-import unSuitWashCarImg from '../../img/unsuit_wash_car.png';
+import comfortableImg from '../../img/comfortable_temperature.png';
+import unComfortableImg from '../../img/uncomfortable_temperature.png';
+import suitableWashCarImg from '../../img/suitable_car_washing.png';
+import unSuitableWashCarImg from '../../img/unsuitable_car_washing.png';
+import drsgHotImg from '../../img/drsg_hot.png';
+import drsgFitImg from '../../img/drsg_fit.png';
+import drsgColdImg from '../../img/drsg_cold.png';
+import fluRiskHighImg from '../../img/flu_risk_high.png';
+import fluRiskLowImg from '../../img/flu_risk_low.png';
+import fitSportImg from '../../img/fit_sport.png';
+import unFitSportImg from '../../img/unfit_sport.png';
+import fitTravImg from '../../img/unfit_trav.png';
+import unFitTravImg from '../../img/unfit_trav.png';
+import uvHighImg from '../../img/uv_high.png';
+import uvNormalImg from '../../img/uv_normal.png';
+import uvLowImg from '../../img/uv_low.png';
 
 class NavigationWeatherComponent extends Component {
 
@@ -22,29 +36,33 @@ class NavigationWeatherComponent extends Component {
     render() {
         const cond_image = "https://cdn.heweather.com/cond_icon/" + this.state.weatherInfo.cond_code + ".png";
         const tmp_value = this.state.weatherInfo.tmp;
-        const wind_sc = this.state.weatherInfo.wind_sc;
-        const comf = this.state.comfInfo.brf;
-        const drsg = this.state.drsgInfo.brf;
-        const flu = this.state.fluInfo.brf;
-        const sport = this.state.sportInfo.brf;
-        const trav = this.state.travInfo.brf;
-        const uv = this.state.uvInfo.brf;
-        const cwIcon = (this.state.cwInfo.brf.toString()).indexof("不宜") === -1 ? unSuitWashCarImg : suitWashCarImg;
-
+        const comfBrf = this.state.comfInfo.brf;
+        const comBrfIcon = comfBrf && comfBrf.indexOf("不舒适") == -1 ? comfortableImg : unComfortableImg;
+        const drsgBrf = this.state.drsgInfo.brf;
+        const drsgBrfIcon = drsgBrf && drsgBrf.indexOf("舒适") == -1 ? (drsgBrf.indexOf("热") == -1 ? drsgColdImg : drsgHotImg) : drsgFitImg;
+        const fluBrf = this.state.fluInfo.brf;
+        const fluBrfIcon = fluBrf && fluBrf.indexOf("易发") == -1 ? fluRiskLowImg : fluRiskHighImg;
+        const sportBrf = this.state.sportInfo.brf;
+        const sportBrfIcon = sportBrf && sportBrf.indexOf("适宜") == -1 ? unFitSportImg : fitSportImg; 
+        const travBrf = this.state.travInfo.brf;
+        const travBrfIcon = travBrf && travBrf.indexOf("适宜") == -1 ? unFitTravImg : fitTravImg;
+        const uvBrf = this.state.uvInfo.brf;
+        const uvBrfIcon = uvBrf && uvBrf.indexOf("中等") == -1 ? (uvBrf.indexOf("强") == -1 ? uvLowImg : uvHighImg) : uvNormalImg; 
+        const cwBrf = this.state.cwInfo.brf;
+        const cwBrfIcon = cwBrf && cwBrf.indexOf("不宜") === -1 ? suitableWashCarImg : unSuitableWashCarImg;
 
         return (
             <div className='navigationWeatherStyle'>
                 <div className="navigationWeatherLocationStyle">成都:</div>
                 <img className="navigationWeatherIconStyle" src={cond_image}/>
                 <div className="navigationWeatherTemperatureStyle"> {tmp_value}℃ </div>
-                <div className="navigationWeatherAirQualityStyle"> {wind_sc} </div>
-                <div className="navigationWeatherAirQualityStyle"> {comf} </div>
-                <div className="navigationWeatherAirQualityStyle"> {drsg} </div>
-                <div className="navigationWeatherAirQualityStyle"> {flu} </div>
-                <div className="navigationWeatherAirQualityStyle"> {sport} </div>
-                <div className="navigationWeatherAirQualityStyle"> {trav} </div>
-                <div className="navigationWeatherAirQualityStyle"> {uv} </div>        
-                <img className="navigationWeatherIconStyle" src={cwIcon}/>
+                <img className="navigationWeatherIconStyle" src={comBrfIcon}/>
+                <img className="navigationWeatherIconStyle" src={drsgBrfIcon}/>
+                <img className="navigationWeatherIconStyle" src={fluBrfIcon}/>
+                <img className="navigationWeatherIconStyle" src={sportBrfIcon}/>
+                <img className="navigationWeatherIconStyle" src={travBrfIcon}/>
+                <img className="navigationWeatherIconStyle" src={uvBrfIcon}/>       
+                <img className="navigationWeatherIconStyle" src={cwBrfIcon}/>
             </div>    
         );
     }
