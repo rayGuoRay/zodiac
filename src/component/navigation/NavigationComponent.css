@@ -1,9 +1,12 @@
 .navigationStyle {
-    height: 35px;
-    padding-left: 30px;
-    padding-right: 30px;
-    background-color: #ffffff;
+    height: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #F7F7F7;
     border-style:solid;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
     border-bottom:0.5px solid rgba(0,0,0,0.2);
     display: flex;
     justify-content: space-between;

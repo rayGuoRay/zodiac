@@ -1,23 +1,57 @@
-.navigationWeatherStyle {
-    display: flex;
-    align-content: center;
-    background-color: #ffffff;
+@font-face {font-family: 'locationFont';
+    src: url('//at.alicdn.com/t/webfont_m0qn0550de.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/webfont_m0qn0550de.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/webfont_m0qn0550de.woff') format('woff'), /* chrome、firefox */
+    url('//at.alicdn.com/t/webfont_m0qn0550de.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/webfont_m0qn0550de.svg#NotoSansHans-DemiLight') format('svg'); /* iOS 4.1- */
 }
 
-.navigationWeatherLocationStyle {
+@font-face {
+    font-family: 'temperatureFont';
+    src: url('//at.alicdn.com/t/webfont_7lvw1oakk3y.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/webfont_7lvw1oakk3y.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/webfont_7lvw1oakk3y.woff') format('woff'), /* chrome、firefox */
+    url('//at.alicdn.com/t/webfont_7lvw1oakk3y.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/webfont_7lvw1oakk3y.svg#思源黑体-极细') format('svg'); /* iOS 4.1- */
+}
 
+.navigationWeatherStyle {
+    display: flex;
+    align-items: center;
+}
+
+.navigationWeatherLocationFontStyle {
+    font-family:"locationFont";
+    font-size:12px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    color: #0C0C0C;
+}
+
+.navigationWeatherTemperatureFontStyle {
+    font-family:"temperatureFont";
+    font-size:12px;
+    font-style:normal;
+    color: #0C0C0C;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    margin-left: 10px;
 }
 
 .navigationWeatherIconStyle {
-    width:25px; 
-    height:25px;
-    margin-left: 5px; 
+    width: 1.2em; 
+    height: 1.2em;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.navigationWeatherTemperatureStyle {
-
-}
-
-.navigationWeatherAirQualityStyle {
-
+.navigationLifeStyleIconStyle {
+    width: 1.0em; 
+    height: 1.0em;
+    vertical-align: center;
+    overflow: hidden;
+    margin-right: 10px;
 }
