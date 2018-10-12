@@ -11,7 +11,7 @@ class NavigationProfileComponent extends Component {
         return (
             <div className='navigationProfileStyle'>
                 <img className='navigationProfileImgStyle' src="http://tx.haiqq.com/uploads/allimg/150327/210050FX-0.jpg"/>
-                <div>用户昵称</div>
+                <div className='navigationProfileFontStyle'>寒の石</div>
             </div>
         )
     }
